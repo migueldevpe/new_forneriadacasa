@@ -1,0 +1,60 @@
+div.delivery-container > div,
+div.retirada-container > div {
+  position: relative;
+
+  &::before {
+    content: "";
+
+    display: inline-block;
+  
+    background-size: 65px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    height: 100%;
+    width: 100%;
+    transition: transform .3s ease-in-out;
+  }
+}
+
+div.delivery-container > div {
+  &&::before {
+    background-image: url(../assets//icons/delivery.svg);
+  }
+
+  &&:hover:before {
+    transform: rotate(-20deg);
+  }
+}
+
+div.retirada-container > div {
+  &&::before {
+    background-image: url(../assets//icons/retirada.svg);
+    background-size: 80px;
+
+    height: 92.5%;
+  }
+
+  &&::after {
+    content: '';
+
+    display: inline-block;
+
+    position: absolute;
+    top: 68px;
+    left: 50%;
+
+    background-color: black;
+
+    height: 3px;
+    width: 60px;
+
+    border-radius: 50px;
+
+    transform: translateX(-50%);
+  }
+
+  &&:hover:before {
+    transform: translateY(-10px);
+  }
+}

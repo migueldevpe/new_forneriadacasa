@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Manrope';
+  src: url(/fonts/Manrope.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'DancingScript';
+  src: url(/fonts/DancingScript.woff2) format('woff2');
+}
