@@ -20,3 +20,35 @@ body {
   height: 100dvh;
   min-width: 320px;
 }
+
+:root {
+  /* H2 */
+  --h2-home: 6.8rem;
+  --h2-delivery: 3.7rem;
+  --h2-local: 1.95rem;
+  --h2-1-about: 3.25rem;
+  --h2-2-about: 2.25rem;
+
+  /* PADDINGS */
+  --header-footer-padding-x: 1rem;
+  --section-padding-x: 1.5rem;
+}
+
+@media (max-width: 1030px) {
+  :root {
+    /* H2 */
+    --h2-home: clamp(3.4rem, 11.25vw, 6.8rem);
+    --h2-delivery: clamp(1.95rem, 6.2vw, 3.7rem);
+    --h2-local: clamp(.95rem, 2.925vw, 1.95rem);
+    --h2-1-about: clamp(1.625rem, 4.975vw, 3.25rem);
+    --h2-2-about: clamp(1.125rem, 3.4vw, 2.25rem);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    /* PADDINGS */
+    --header-footer-padding-x: .75rem;
+    --section-padding-x: 1rem;
+  }
+}

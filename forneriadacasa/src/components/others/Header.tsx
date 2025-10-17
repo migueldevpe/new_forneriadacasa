@@ -1,13 +1,16 @@
 import "./Header.css";
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdMenu, MdShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { useHandleSectionClick } from "../../hooks/useHandleSectionClick";
 
 //import Pizzas from "../../pages/Pizzas.tsx"
 import OrderNow from "./OrderNow";
 
 export default function Header() {
+  const handleSectionClick = useHandleSectionClick();
+
   const [hasPizza, setHasPizza] = useState(false);
 
   useEffect(() => {
@@ -23,9 +26,6 @@ export default function Header() {
     return () => clearInterval(interval);
   }, []);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   // function handleSectionClick(e: React.MouseEvent) {
   //   e.preventDefault()
 
@@ -40,40 +40,6 @@ export default function Header() {
   //   }
   // }
 
-  function handleSectionClick(local: string) {
-    return (e: React.MouseEvent) => {
-      e.preventDefault()
-
-      // if (window.innerWidth <= 768) {
-
-      // }
-
-      if (location.pathname === '/') {
-        if (local === "#home") {
-          window.scrollTo({ top: 0 });
-        } else {
-          document.querySelector(local)?.scrollIntoView({ block: "start"});
-        }
-      } else if (location.pathname !== "/" && local === "#home") {
-        const timeout = setTimeout(() => {
-          window.scrollTo({ top: 0 })
-        }, 100);
-
-        navigate("/");
-
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          document.querySelector(local)?.scrollIntoView({ block: "start"});
-        }, 100);
-
-        navigate("/");
-      
-        return () => clearTimeout(timeout);
-      }
-    }
-  }
-
   // ANOTAR diferença no return(e: React.MouseEvent) e function(e: React.MouseEvent), do setInterval/Timeout/Falar da Renderização condicional(X && {})
 
   /*{location.pathname === "/" ? "/#delivery" : "/"}*/
@@ -87,9 +53,8 @@ export default function Header() {
             <img src="https://forneriadacasa.vercel.app/assets/icon-pizzaria-ifduOnsJ.webp" alt="Logo - Forneria da Casa" className="h-full w-full aspect-square" />
           </picture>        
         </Link>
-
-        <nav className="flex items-center flex-row gap-4 h-full">
-          <ul className="flex items-center flex-row gap-4 h-full text-[1.125rem] font-bold">
+        <nav className="nav-container flex items-center flex-row gap-3 h-full">
+          <ul className="flex items-center flex-row gap-3 h-full text-[1.125rem] font-bold">
             <li className="nav-link flex items-center h-full">
               <button type="button" onClick={handleSectionClick("#home")} className="flex items-center h-full cursor-pointer">Início</button>
             </li>
@@ -102,16 +67,17 @@ export default function Header() {
             <li className="nav-link h-full">
               <a href="#" onClick={handleSectionClick("#about")} className="flex items-center h-full cursor-pointer">Sobre</a>
             </li>
-            <li className="flex items-center h-full">
+            {/* <li className="flex items-center h-full">
               <OrderNow />
-            </li>
+            </li> */}
           </ul>
+          <OrderNow />
           <button type="button" className="card-button relative h-full !p-1.25 cursor-pointer">
             <MdShoppingCart size={24} />
             {hasPizza && <span className="flex items-center justify-center absolute top-[4px] right-[-4px] bg-red-500 h-[15px] w-[15px] rounded-[9999px] text-[.8rem] font-bold">1</span>}
             {/* <span className="flex items-center justify-center absolute top-[-4px] right-[-4px] bg-red-500 h-[15px] w-[15px] rounded-[9999px] text-[.8rem] font-bold">1</span> */}
           </button>
-          <button type="button" className="hidden h-full cursor-pointer">
+          <button type="button" className="menu-container h-full cursor-pointer" title="Acessar carrinho">
             <MdMenu size={20} />
           </button>
         </nav>

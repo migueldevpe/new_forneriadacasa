@@ -1,6 +1,10 @@
 header {
-  padding: 0 1rem;
+  padding: 0 var(--header-footer-padding-x);
 }
+
+/* nav.nav-container ul {
+  
+} */
 
 li.nav-link {
   position: relative;
@@ -11,7 +15,7 @@ li.nav-link {
     
     position: absolute;
     right: 0;
-    left: 0;
+    /* left: 0; */
     bottom: 0;
 
     background-color: white;
@@ -24,6 +28,7 @@ li.nav-link {
   }
 
   &:hover:after {
+    left: 0;
     width: 100%;
   }
 
@@ -33,5 +38,21 @@ li.nav-link {
     &:hover:after {
       background-color: gray;
     }
+  }
+}
+
+button.menu-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  nav.nav-container ul {
+    display: none;
+  }
+
+  button.menu-container {
+    display: flex;
   }
 }

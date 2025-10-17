@@ -1,0 +1,20 @@
+section#local {
+  padding: 0 var(--section-padding-x);
+}
+
+div.local-text-content h2 {
+  &::before {
+    content: '\01F355';
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: .8em;
+    height: .8em;
+  }
+}
+
+a.btn-local {
+  transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
+}

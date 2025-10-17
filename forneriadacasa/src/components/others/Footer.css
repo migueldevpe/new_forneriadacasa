@@ -1,0 +1,6 @@
+footer {
+  background-image: url(https://forneriadacasa.vercel.app/assets/background-footer-lHoX7cPH.webp);
+  background-size: 250px;
+
+  padding: 1.5rem var(--header-footer-padding-x);
+}

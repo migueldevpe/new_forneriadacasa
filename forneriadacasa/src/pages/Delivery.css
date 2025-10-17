@@ -1,3 +1,7 @@
+section#delivery {
+  padding: 0 var(--section-padding-x);
+}
+
 div.delivery-container > div,
 div.retirada-container > div {
   position: relative;
@@ -7,7 +11,7 @@ div.retirada-container > div {
 
     display: inline-block;
   
-    background-size: 65px;
+    background-size: 60px;
     background-position: center center;
     background-repeat: no-repeat;
 
@@ -30,9 +34,9 @@ div.delivery-container > div {
 div.retirada-container > div {
   &&::before {
     background-image: url(../assets//icons/retirada.svg);
-    background-size: 80px;
+    background-size: 75px;
 
-    height: 92.5%;
+    height: 95%;
   }
 
   &&::after {
@@ -41,13 +45,13 @@ div.retirada-container > div {
     display: inline-block;
 
     position: absolute;
-    top: 68px;
+    top: 66px;
     left: 50%;
 
     background-color: black;
 
     height: 3px;
-    width: 60px;
+    width: 56px;
 
     border-radius: 50px;
 
