@@ -1,3 +1,4 @@
-a.btn-ordernow {
+a.btn-fdc,
+button.btn-fdc {
   transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
 }

@@ -37,3 +37,27 @@ span.home-price-aside {
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  section#home > div:first-child {
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  div.home-text-content {
+    text-align: center;
+
+    width: 100%;
+    max-width: 475px;
+  }
+
+  aside.home-aside-content {
+    justify-content: center;
+  }
+
+  picture.home-img-container {
+    align-self: center;
+    width: 100%;
+    max-width: 475px;
+  }
+}

@@ -1,11 +1,11 @@
 div.card-container {
   grid-template-rows: 200px minmax(200px, auto);
 
-  box-shadow: 4px 4px 4px #00000033;
+  box-shadow: 4px 4px 8px #00000033;
   transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
 
   &:hover {
-    box-shadow: 4px 6px 4px #00000033;
+    box-shadow: 4px 6px 8px #00000033;
 
     transform: translateY(-2px);
   }

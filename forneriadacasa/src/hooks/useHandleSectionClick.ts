@@ -1,41 +1,47 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { handleToggle } from "./handleToggle";
 
 export function useHandleSectionClick() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSectionClick = (section: string) => (e: React.MouseEvent) => {
-    e.preventDefault()
+  function handleSectionClick(section: string) {
+    return (e: React.MouseEvent) => {
+      e.preventDefault()
+      const menu = document.querySelector(".menu");
 
-    // if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 768) {
+        if (menu?.classList.contains("active")) {
+          handleToggle("menu")();
+        }
+      };
 
-    // }
+      if (location.pathname === "/") {
+        if (section === "#home") {
+          window.scrollTo({ top: 0 });
+        } else {
+          document.querySelector(section)?.scrollIntoView({ block: "start"});
+        }
+      } else if (location.pathname !== "/" && section === "#home") {
+        const timeout = setTimeout(() => {
+          window.scrollTo({ top: 0 })
+        }, 300);
 
-    if (location.pathname === "/") {
-      if (section === "#home") {
-        window.scrollTo({ top: 0 });
+        navigate("/");
+
+        return () => clearTimeout(timeout);
       } else {
-        document.querySelector(section)?.scrollIntoView({ block: "start"});
+        const timeout = setTimeout(() => {
+          document.querySelector(section)?.scrollIntoView({ block: "start" });
+        }, 300);
+
+        navigate("/");
+      
+        return () => clearTimeout(timeout);
       }
-    } else if (location.pathname !== "/" && section === "#home") {
-      const timeout = setTimeout(() => {
-        window.scrollTo({ top: 0 })
-      }, 300);
+    };
+  }
 
-      navigate("/");
-
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
-        document.querySelector(section)?.scrollIntoView({ block: "start" });
-      }, 300);
-
-      navigate("/");
-    
-      return () => clearTimeout(timeout);
-    }
-  };
-  
   return handleSectionClick;
 }
 

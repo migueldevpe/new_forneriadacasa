@@ -1,10 +1,8 @@
-header {
+header#header > div:first-child {
   padding: 0 var(--header-footer-padding-x);
-}
 
-/* nav.nav-container ul {
-  
-} */
+  transition: box-shadow .6s ease-in-out;
+}
 
 li.nav-link {
   position: relative;
@@ -27,32 +25,142 @@ li.nav-link {
     transition: background-color .3s ease-in-out, width .3s ease-in-out;
   }
 
-  &:hover:after {
+  &.active::after {
     left: 0;
     width: 100%;
   }
 
   &:hover {
-    color: gray;
+    color: #acacac;
 
     &:hover:after {
-      background-color: gray;
+      background-color: #acacac;
     }
   }
 }
 
-button.menu-container {
+button#mobile-menu {
   display: none;
   align-items: center;
   justify-content: center;
 }
 
 @media (max-width: 768px) {
-  nav.nav-container ul {
-    display: none;
+  ul.menu {
+    flex-direction: column;
+    gap: 0;
+
+    position: fixed;
+    top: -12rem;
+    right: 50%;
+
+    background-color: #c5c5c5;
+    border-bottom: 1px solid green;
+
+    z-index: -5;
+
+    height: fit-content;
+    width: 100%;
+
+    visibility: visible;
+
+    transform: translateX(50%);
+    transition: top .6s ease-in-out, visibility .6s ease-in-out;
   }
 
-  button.menu-container {
+  li.nav-link {
+    gap: 0;
+    
+    height: 100%;
+    width: 100%;
+    transition: background-color .3s ease-in-out;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      background-color: #aaaaaa;
+      
+      color: unset;
+    }
+  }
+
+  li.nav-link a,
+  li.nav-link button {
     display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 1rem;
+  }
+
+  ul.menu.active {
+    top: 48px;
+
+    visibility: visible;
+  } 
+
+  header#header > div:first-child:has(ul.menu.active) {
+    box-shadow: 0 0 0 transparent;
+  }
+
+  button#mobile-menu {
+    display: flex;
+
+    height: 100%;
+    width: auto;
+
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+
+    div.line-top,
+    div.line-middle,
+    div.line-bottom {
+      background-color: white;
+
+      height: 3px;
+      width: 24px;
+
+      border-radius: 3px;
+
+      /* box-shadow: 1px 1px 5px #00000020; */
+    }
+
+    div.line-middle {
+      margin: 4px 0px;
+    }
+
+    &.active {
+      transition: background-color 0.5s ease-in-out;
+
+      div.line-top {
+        animation: line-top-anim 0.5s ease-in-out forwards;
+      }
+
+      div.line-middle {
+        animation: line-middle-anim 0.5s forwards;
+      }
+
+      div.line-bottom {
+        animation: line-bottom-anim 0.5s ease-in-out forwards;
+      }
+    }
+
+    &.closing {
+      div.line-top {
+        animation: line-top-anim-rev 0.5s ease-in-out forwards;
+      }
+
+      div.line-middle {
+        animation: line-middle-anim-rev 0.5s forwards;
+      }
+
+      div.line-bottom {
+        animation: line-bottom-anim-rev 0.5s ease-in-out forwards;
+      }
+    }
   }
 }

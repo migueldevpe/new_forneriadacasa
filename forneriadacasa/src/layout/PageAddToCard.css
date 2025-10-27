@@ -1,0 +1,6 @@
+@media (max-width: 500px) {
+  div.pageCard-text-content h1 {
+    font-size: clamp(1.85rem, 9.25vw, 3rem);
+  }
+}
+

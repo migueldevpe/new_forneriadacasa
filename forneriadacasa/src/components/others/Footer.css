@@ -1,6 +1,33 @@
 footer {
-  background-image: url(https://forneriadacasa.vercel.app/assets/background-footer-lHoX7cPH.webp);
+  background-image: url(../../assets//images/background-footer.webp);
   background-size: 250px;
 
   padding: 1.5rem var(--header-footer-padding-x);
+}
+
+@media (max-width: 768px) {  
+  div.f-content {
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  div.f-columns {
+    gap: 1.6125rem;
+  }
+}
+
+@media (max-width: 620px) {  
+  div.f-label {
+    text-align: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 500px) {  
+  div.f-columns {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

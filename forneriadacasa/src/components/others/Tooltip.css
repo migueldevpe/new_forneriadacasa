@@ -1,0 +1,64 @@
+div.tooltip-content {
+  display: flex;
+
+  &:hover {
+    div.tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+div.tooltip {
+  position: absolute;
+  top: var(--tooltip-hover-y); /* 100 / 10 */
+  left: var(--tooltip-hover-x);
+
+  background-color: #f1f1f1;
+  color: #000;
+
+  text-align: justify;
+  hyphens: auto;
+  font-size: .75rem;
+
+  border-radius: 5px;
+
+  width: max-content;
+  /* min-width: 25px; */
+  max-width: 175px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 5;
+
+  transform: translateX(-50%);
+  transition: background-color .3s ease-in-out, color .3s ease-in-out, opacity .2s ease-in-out, visibility .2s ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translate(-50%, 0);
+
+    top: -8px;
+    left: 50%;
+
+    background-color: transparent;
+
+    height: 0;
+    width: 0;
+  }
+}
+
+div.t-arrow {
+  &::before {
+    top: unset;
+    bottom: -8px;
+    left: 50%;
+
+    border-top: 10px solid #f1f1f1;   
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transition: border-color .3s ease-in-out;
+  }
+}

@@ -22,33 +22,62 @@ body {
 }
 
 :root {
+  /* CORES */
+  --nav-link-hover: #acacac;
+  --bg-yellow-1: #FED000;
+  --bg-yellow-2: #fec300;
+  --bg-white-1: #f5f5f5;
+  --bg-white-2: #d7d7d7;
+  --title-red-1: #ae0030;
+  --title-red-2: #9f002d;
+  --card-text-secondary: #4A4A4A;
+  --button-color: #38761D;
+  --button-color-hover: #2a5b15;
+  --border-logo: #266f32;
+  --price-home-color-1: #f9f9d0;
+  --price-home-color-2: #e1e1e1;
+  --cart-header: #ae0030;
+  --cart-item-bg: #efefef;
+  --cart-contain-icon-bg: #fb2c36;
+  --cart-text-null: #6a7282;
+  --text-salgado-doce: #482400;
+  --text-salgado-doce-hover: #885f00;
+
   /* H2 */
   --h2-home: 6.8rem;
   --h2-delivery: 3.7rem;
-  --h2-local: 1.95rem;
+  --h2-local: 1.925rem;
   --h2-1-about: 3.25rem;
   --h2-2-about: 2.25rem;
 
   /* PADDINGS */
   --header-footer-padding-x: 1rem;
+  --section-padding-y: clamp(2rem, 10dvh, 4rem);
   --section-padding-x: 1.5rem;
 }
 
 @media (max-width: 1030px) {
   :root {
     /* H2 */
-    --h2-home: clamp(3.4rem, 11.25vw, 6.8rem);
-    --h2-delivery: clamp(1.95rem, 6.2vw, 3.7rem);
-    --h2-local: clamp(.95rem, 2.925vw, 1.95rem);
-    --h2-1-about: clamp(1.625rem, 4.975vw, 3.25rem);
-    --h2-2-about: clamp(1.125rem, 3.4vw, 2.25rem);
+    --h2-home: clamp(5.4125rem, 11.25vw, 6.8rem);
+    --h2-delivery: clamp(2.98rem, 6.2vw, 3.7rem);
+    --h2-local: clamp(1.39rem, 2.88vw, 1.9rem);
+    --h2-1-about: clamp(2.3925rem, 4.95vw, 3.3rem);
+    --h2-2-about: clamp(1.6325rem, 3.4vw, 2.25rem);
   }
 }
 
 @media (max-width: 768px) {
   :root {
+    /* H2 */
+    --h2-home: clamp(5.35rem, 22vw, 6.8rem);
+    --h2-delivery: clamp(2.5225rem, 12.6vw, 3.7rem);
+    --h2-local: clamp(1.17rem, 5.85vw, 1.945rem);
+    --h2-1-about: clamp(2.0235rem, 10.1vw, 3.325rem);
+    --h2-2-about: clamp(1.3825rem, 6.75vw, 2.25rem);
+
     /* PADDINGS */
-    --header-footer-padding-x: .75rem;
+    --header-footer-padding-x: .5rem;
     --section-padding-x: 1rem;
   }
 }

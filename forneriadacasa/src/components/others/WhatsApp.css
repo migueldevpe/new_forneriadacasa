@@ -1,0 +1,26 @@
+a.fdc-whatsapp {
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 2px;
+    bottom: -2px;
+
+    border-top: 8px solid transparent;
+    border-left: 13px solid #25d366;
+    border-bottom: 8px solid transparent;
+
+    transform: rotate(16deg);
+    transition: border .3s ease-in-out;
+  }
+}
+
+a.fdc-whatsapp:hover {
+  &::after {
+    border-left: 13px solid #29ba5e;
+  }
+}
+
+span.w-noti {
+  animation: w-noti 3s ease-in-out infinite;
+}

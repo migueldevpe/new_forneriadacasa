@@ -1,5 +1,7 @@
 section#about {
-  padding: 0 var(--section-padding-x);
+  gap: var(--section-padding-y);
+
+  padding: var(--section-padding-y) var(--section-padding-x);
 }
 
 a.insta-flavio {
@@ -26,5 +28,45 @@ a.insta-flavio {
 
   &:hover:after {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  div.about-container {
+    flex-direction: column-reverse;
+    gap: 1.125rem;
+  }
+
+  div.about-text-content {
+    text-align: center;
+
+    width: 100%;
+    max-width: 475px;
+  }
+
+  picture.about-img-container {
+    align-self: center;
+
+    width: 100%;
+    max-width: 475px;
+  }
+
+  div.feedbacks-container {
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  div.feedbacks-text-content {
+    text-align: center;
+
+    width: 100%;
+    max-width: 475px;
+  }
+
+  div.feedbacks-card-container {
+    align-self: center;
+
+    width: 100%;
+    max-width: 475px;
   }
 }
