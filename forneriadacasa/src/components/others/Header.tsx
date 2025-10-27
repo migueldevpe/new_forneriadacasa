@@ -51,7 +51,7 @@ export default function Header() {
                 <span>PEDIR AGORA</span>
               </>
             } title="Ir para página de pizzas." />
-            <button type="button" className="card-button relative h-full !p-1.25 cursor-pointer" title="Acessar carrinho" onClick={handleToggle('carrinho')}>
+            <button type="button" className="card-button relative h-full !p-1.25 cursor-pointer" title="Acessar carrinho." onClick={handleToggle('carrinho')}>
               <MdShoppingCart size={24} />
               {cart.length > 0 && <span className="flex items-center justify-center absolute top-[4px] right-[-4px] bg-[var(--cart-contain-icon-bg)] h-[15px] w-[15px] rounded-[9999px] text-[.8rem] font-bold">1</span>}
               {/* <span className="flex items-center justify-center absolute top-[-4px] right-[-4px] bg-red-500 h-[15px] w-[15px] rounded-[9999px] text-[.8rem] font-bold">1</span> */}
