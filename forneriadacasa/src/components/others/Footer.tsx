@@ -64,7 +64,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-1.5 hover:underline active:underline cursor-pointer">
                   <PiInstagramLogoFill />
-                  <a href="https://www.instagram.com/forneriadacasa" target="_blank" rel="noopener noreferrer" className="w-full !leading-[1.2em]">Instagram</a>
+                  <a href="https://www.instagram.com/forneriadacasa/" target="_blank" rel="noopener noreferrer" className="w-full !leading-[1.2em]">Instagram</a>
                 </li>
                 <li className="flex items-center gap-1.5 hover:underline active:underline cursor-pointer">
                   <IoLogoFacebook />
