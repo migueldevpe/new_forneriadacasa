@@ -43,8 +43,8 @@ export default function About() {
           </div>
         </div>
         <div className="feedbacks-card-container w-6/12">
-          {/* <script src="https://static.elfsight.com/platform/platform.js" defer async></script>
-          <div className="elfsight-app-4438d660-afd7-485a-9d24-ef61b7765cfb aspect-[488/428]" data-elfsight-app-lazy></div> */}
+          <script src="https://static.elfsight.com/platform/platform.js" defer async></script>
+          <div className="elfsight-app-4438d660-afd7-485a-9d24-ef61b7765cfb aspect-[488/428]" data-elfsight-app-lazy></div>
         </div>
       </div>
     </section>
