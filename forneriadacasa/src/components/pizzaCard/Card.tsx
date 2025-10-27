@@ -23,7 +23,7 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
 
   function handleAdd() {
     addToCart({
-      id: title, // pode mudar pra ID real depois
+      id: title,
       title: title,
       img: img,
       price: parseFloat(valor),

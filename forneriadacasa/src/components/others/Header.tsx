@@ -18,8 +18,6 @@ export default function Header() {
 
   // ANOTAR diferença no return (e: React.MouseEvent) => {} e function(e: React.MouseEvent), do setInterval/Timeout/Falar da Renderização condicional {X && ()}
 
-  /*{location.pathname === "/" ? "/#delivery" : "/"}*/
-
   return (
   
     <header id="header" className="sticky top-0 w-full z-10">
