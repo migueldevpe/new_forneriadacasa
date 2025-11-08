@@ -15,7 +15,7 @@ export default function PageAddToCard() {
   return (
 
     <main className="flex items-center justify-center flex-col">
-      <section className="flex justify-center bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {h-full} h-[80dvh] w-full !py-4 !px-4">
+      <section className="flex justify-center bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {h-full} {h-[80dvh]} w-full !py-4 !px-4">
         <div className="flex flex-col gap-8 bg-[] w-full max-w-[1000px]">
           <div className="pageCard-text-content !mt-6">
             <h1 className="text-[var(--title-red-1)] text-[3rem] !font-['DancingScript']">Aproveite nossas gostosuras</h1>
