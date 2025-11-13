@@ -13,15 +13,15 @@ import ButtonFDC from "../others/ButtonFDC";
 import Tooltip from "../others/Tooltip.tsx";
 
 export default function CartContainer() {
-  const { cart, updateQuantity, removeFromCart, total } = useCartStore();
+  const { cart, updateBorderPizza, updateQuantity, removeFromCart, total } = useCartStore();
 
-  const [payMethod, setPayMethod] = useState("");
-  const [adress, setAdress] = useState("");
-  const [note, setNote] = useState("");
-  const [stuffedBorder, setStuffedBorder] = useState("");
+  const [name, setName] = useState<string>("")
+  const [payMethod, setPayMethod] = useState<string>("");
+  const [adress, setAdress] = useState<string>("");
+  const [note, setNote] = useState<string>("");
 
   const linhasDoPedido = cart.map(item => 
-    `*${item.quantity}x* ${item.title} - *R$${item.price.toFixed(2)}*/unidade - Subtotal: *R$${(item.price * item.quantity).toFixed(2)}*`
+    `${item.quantity}x ${item.title} - R$${item.price.toFixed(2)}/unidade - Borda: ${item.borderPizza === "" ? "SEM RECHEIO" : item.borderPizza.toUpperCase()} - Subtotal: R$${(item.price * item.quantity).toFixed(2)}`
   ).join("\n\n");
 
   function submitMensagem(e: React.FormEvent) {
@@ -29,22 +29,23 @@ export default function CartContainer() {
 
     if (!payMethod || !adress) return;
 
+    if (!name) return window.alert("OBRIGATÓRIO: Insira o seu nome!")
+
     const mensagem = 
       `Olá! Gostaria de realizer um pedido.
       
-      ⪪≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡⪫
+      <------------------------------->
       
-      Pedido — *Forneria da Casa*
+      Pedido de ${name.toUpperCase()} - Forneria da Casa
 
       ${linhasDoPedido.replace(/\./g, ',')}
 
-      ⪪≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡⪫
+      <------------------------------->
 
-      Método de Pagamento: *${payMethod.toUpperCase()}*
-      Borda: *${stuffedBorder === "" ? "SEM RECHEIO" : stuffedBorder.toUpperCase()}*
-      Endereço: *${adress.toUpperCase()}*
-      Observação: *${note === "" ? "N/A" : note.toUpperCase()}*
-      Valor total: *R$${total.toFixed(2).replace(/\./g, ',')}*` 
+      Método de Pagamento: ${payMethod.toUpperCase()}
+      Endereço: ${adress.toUpperCase()}
+      Observação: ${note === "" ? "N/A" : note.toUpperCase()}
+      Valor total: R$${total.toFixed(2).replace(/\./g, ',')}` 
 
     window.open(`https://wa.me/5581984325732?text=${encodeURIComponent(mensagem.replace(/^(?!\s*$)\s+/gm, ''))}`, "_blank", "noopener,noreferrer")
   }
@@ -67,20 +68,33 @@ export default function CartContainer() {
                   cart.map((item) => (                  
                     <div key={item.id} className="cart-item grid gap-1 bg-[var(--cart-item-bg)] h-[120px] w-full rounded-md shadow-xs !p-1">
                       <div className="h-full w-full rounded-md border-black border-2 overflow-hidden">
-                        <img src={item.img} alt={item.title} className="h-full w-full object-cover" loading="lazy" decoding="async" fetchPriority="low" />
+                        <img src={item.img} alt={`${item.title} - Ilustração`} className="h-full w-full object-cover" loading="lazy" decoding="async" fetchPriority="low" />
                       </div>
                       <div className="flex flex-col justify-between h-full w-full !p-1">
                         <div>
-                          <h1 className="text-[1.125rem] font-bold">{item.title}</h1>
-                        </div>
+                          <h1 className="text-[1.125rem] font-bold mb-1!">{item.title}</h1>
+                          <div className="flex items-center flex-row gap-1">
+                            <label htmlFor="borderPizza">Borda:</label>
+                            <select name="borderPizza" id="borderPizza" onChange={(e) => updateBorderPizza(item.id, e.target.value)} value={item.borderPizza} className="max-h-[22px] [all:revert]">
+                              <option value="Sem recheio" selected>Sem recheio</option>
+                              <option value="Catupiry">Catupiry</option>
+                              <option value="Cheddar">Cheddar</option>
+                              <option value="Cream Cheese">Cream Cheese</option>
+                              <option value="Chocolate">Chocolate</option>
+                            </select>
+                            <Tooltip label="Consulte o valor correto dos adicionais (Bordas ou Turbinações) no WhatsApp." tArrow="t-arrow-top" style={{ "--tooltip-hover-x": "50%", "--tooltip-hover-y": "1.75rem", boxShadow: "0 0 20px #00000018" } as React.CSSProperties}>
+                              <IoInformationCircle />
+                            </Tooltip>
+                          </div>
+                        </div>    
                         <div className="flex items-center justify-between flex-row">
                           <div className="flex items-center justify-center flex-row gap-2">
                             <span className="font-bold">R${(item.price * item.quantity).toFixed(2).replace(/\./g, ',')}</span>
                             <div>
                               <input
-                              type="number" 
-                              min={1} max={10} 
-                              placeholder="1" 
+                              type="number"
+                              min={1} max={10}
+                              placeholder="1"
                               value={item.quantity}
                               onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
                               className="!h-fit !w-[35px] [all:revert]"/>
@@ -107,24 +121,14 @@ export default function CartContainer() {
                       <option value="Dinheiro">Dinheiro</option>
                       <option value="Cartão">Cartão</option>
                     </select>
-                  </div>
+                  </div>     
                   <div className="flex items-center flex-row gap-1">
-                    <label htmlFor="stuffedBorder">Borda:</label>
-                    <select name="stuffedBorder" id="stuffedBorder" onChange={(e) => setStuffedBorder(e.target.value)} value={stuffedBorder} className="max-h-[22px] [all:revert]">
-                      <option value="" selected>Sem recheio</option>
-                      <option value="Catupiry">Catupiry</option>
-                      <option value="Cheddar">Cheddar</option>
-                      <option value="Cream Cheese">Cream Cheese</option>
-                      <option value="Chocolate">Chocolate</option>
-                    </select>
-                    <Tooltip label="Consulte o valor correto dos adicionais (Bordas ou Turbinações) no WhatsApp." style={{ "--tooltip-hover-x": "50%", "--tooltip-hover-y": "-3.75rem" } as React.CSSProperties}>
-                      <IoInformationCircle />
-                    </Tooltip>
-
-                  </div>                  
+                    <label htmlFor="name">Nome:</label>
+                    <input type="text" name="name" id="name" placeholder="Seu nome" onChange={(e) => setName(e.target.value)} value={name} className="!max-h-[22px] !w-full [all:revert]" required />
+                  </div>                              
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="adress">Endereço:</label>
-                    <input type="text" name="adress" id="adress" placeholder="Cidade, Rua, Bloco, Número" onChange={(e) => setAdress(e.target.value)} value={adress} className="!max-h-[22px] !w-full [all:revert]" required/>
+                    <input type="text" name="adress" id="adress" placeholder="Cidade, Rua, Bloco, Número" onChange={(e) => setAdress(e.target.value)} value={adress} className="!max-h-[22px] !w-full [all:revert]" required />
                   </div>
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="note">Observação:</label>

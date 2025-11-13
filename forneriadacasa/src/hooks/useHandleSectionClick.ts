@@ -20,7 +20,7 @@ export function useHandleSectionClick() {
         if (section === "#home") {
           window.scrollTo({ top: 0 });
         } else {
-          document.querySelector(section)?.scrollIntoView({ block: "start"});
+          document.querySelector(section)?.scrollIntoView({ block: "start" });
         }
       } else if (location.pathname !== "/" && section === "#home") {
         const timeout = setTimeout(() => {
@@ -30,6 +30,8 @@ export function useHandleSectionClick() {
         navigate("/");
 
         return () => clearTimeout(timeout);
+      } else if (location.pathname === "/order" && (section === "#salgadas" || "#doces")) {
+        document.querySelector(section)?.scrollIntoView({ block: "start" })
       } else {
         const timeout = setTimeout(() => {
           document.querySelector(section)?.scrollIntoView({ block: "start" });

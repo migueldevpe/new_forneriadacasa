@@ -6,6 +6,7 @@ interface CartItem {
   title: string;
   img: string;
   price: number;
+  borderPizza: string;
   quantity: number;
 }
 
@@ -14,6 +15,7 @@ interface CartStore {
   total: number;
   addToCart: (item: Omit<CartItem, "quantity">) => void;
   removeFromCart: (id: string) => void;
+  updateBorderPizza: (id: string, borderPizza: string) => void;
   updateQuantity: (id: string, quantity: number | string) => void;
   clearCart: () => void;
 }
@@ -45,6 +47,16 @@ export const useCartStore = create<CartStore>()(
         set({
           cart: newCart,
           total: newCart.reduce((acc, i) => acc + i.price * i.quantity, 0),
+        });
+      },
+
+      updateBorderPizza: (id, border) => {
+        const newCart = get().cart.map((i) =>
+          i.id === id ? { ...i, borderPizza: border } : i
+        );
+
+        set({
+          cart: newCart,
         });
       },
 

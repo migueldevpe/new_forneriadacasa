@@ -26,6 +26,7 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
       id: title,
       title: title,
       img: img,
+      borderPizza: "",
       price: parseFloat(valor),
     });
   }
@@ -37,7 +38,7 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
         {label && (<span className={`absolute top-1 right-1 text-white text-xs font-bold rounded-md !p-1`} style={{ background: `${bg_label}` } as React.CSSProperties}>
           {label}
         </span>)}
-        <img src={img} alt="Pizza - Ilustração" className={`h-full w-full object-cover aspect-[225/200]`}  loading="lazy" decoding="async" fetchPriority="low"/>
+        <img src={img} alt={`${title} - Ilustração`} className={`h-full w-full object-cover aspect-[225/200]`}  loading="lazy" decoding="async" fetchPriority="low"/>
       </div>
       <div>
         <div className="flex justify-between flex-col gap-4 h-full w-full">

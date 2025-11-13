@@ -22,8 +22,8 @@ export default function Home() {
                   <span>PEDIR AGORA</span>
                 </>
               } title="Ir para página de pizzas." />
-              <span className="home-price-aside text-[var(--price-home-color-1)] text-[1.475rem] font-bold">R$ 61,99</span>
-              <small className="text-[var(--price-home-color-2)] text-[.875rem] line-through">R$ 77,99</small>
+              <span className="home-price-aside text-[var(--price-home-color-1)] text-[clamp(1.25rem,6.45vw,1.475rem)] sm:text-[1.475rem] font-bold">R$ 62,00</span>
+              <small className="text-[var(--price-home-color-2)] text-[clamp(.8rem,4vw,.875rem)] sm:text-[.875rem] line-through">R$ 78,00</small>
             </aside>
           </div>
         </div>

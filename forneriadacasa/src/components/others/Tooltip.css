@@ -62,3 +62,17 @@ div.t-arrow {
     transition: border-color .3s ease-in-out;
   }
 }
+
+div.t-arrow-top {
+  &::before {
+    top: unset;
+    top: -8px;
+    bottom: unset;
+    left: 50%;
+
+    border-bottom: 10px solid #f1f1f1;   
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transition: border-color .3s ease-in-out;
+  }
+}
