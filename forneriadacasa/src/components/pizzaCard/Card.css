@@ -11,6 +11,16 @@ div.card-container {
   }
 }
 
+p.descParagraph {
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
 button.btn-add {
   transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
 }

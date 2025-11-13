@@ -44,7 +44,7 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
         <div className="flex justify-between flex-col gap-4 h-full w-full">
           <div>
             <h1 className="text-[1.2rem] font-bold">{title}</h1>
-            <p className="text-[var(--card-text-secondary)] text-justify hyphens-auto text-[.8rem] !mt-2.5">
+            <p className="descParagraph text-[var(--card-text-secondary)] text-justify hyphens-auto text-[.8rem] !mt-2.5">
               {desc}
             </p>
           </div>
