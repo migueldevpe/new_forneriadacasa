@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://forneriadacasa.vercel.app/
+Sitemap: https://forneriadacasa.com/sitemap.xml
