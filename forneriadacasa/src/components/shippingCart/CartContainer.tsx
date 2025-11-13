@@ -82,7 +82,7 @@ export default function CartContainer() {
                               <option value="Cream Cheese">Cream Cheese</option>
                               <option value="Chocolate">Chocolate</option>
                             </select>
-                            <Tooltip label="Consulte o valor correto dos adicionais (Bordas ou Turbinações) no WhatsApp." tArrow="t-arrow-top" style={{ "--tooltip-hover-x": "50%", "--tooltip-hover-y": "1.75rem", boxShadow: "0 0 20px #00000018" } as React.CSSProperties}>
+                            <Tooltip label="Consulte o valor correto dos adicionais (Bordas ou Turbinações) no WhatsApp." tArrow="t-arrow-top" style={{ "--tooltip-hover-x": "50%", "--tooltip-hover-y": "1.75rem", boxShadow: "0 0 20px #00000015" } as React.CSSProperties}>
                               <IoInformationCircle />
                             </Tooltip>
                           </div>
