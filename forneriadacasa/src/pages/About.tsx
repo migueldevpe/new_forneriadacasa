@@ -43,8 +43,9 @@ export default function About() {
           </div>
         </div>
         <div className="feedbacks-card-container w-6/12">
-          <script src="https://static.elfsight.com/platform/platform.js" defer async></script>
-          {/* <div className="elfsight-app-4438d660-afd7-485a-9d24-ef61b7765cfb aspect-[488/428]" data-elfsight-app-lazy></div> */}
+          {/* <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div className="elfsight-app-17c7708a-330c-4b8b-99a0-2e265339be64" data-elfsight-app-lazy></div> */}
+          <div className="tagembed-widget" style={{ width: "100%", height: "100%", overflow: "auto" }} data-widget-id="285745" data-website="1"></div><script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
         </div>
       </div>
     </section>
