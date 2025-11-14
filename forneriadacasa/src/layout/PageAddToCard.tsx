@@ -23,7 +23,7 @@ export default function PageAddToCard() {
           <div className="flex items-center justify-center flex-col gap-8">
             <div id="doces" className="scroll-mt-[88px] w-full">
               <h1 className="text-[var(--text-salgado-doce)] text-3xl font-semibold !font-['DancingScript'] !mb-4">Doces</h1>
-              <div className="cards-container grid gap-4 h-fit w-full">
+              <div className="cards-container grid gap-3 h-fit w-full">
                 {pizzasDoces.map((pizzaDoce) => {
                   return (
                     <Card
@@ -43,7 +43,7 @@ export default function PageAddToCard() {
             <div id="salgadas" className="scroll-mt-[88px] w-full">
               <h1 className="text-[var(--text-salgado-doce)] text-3xl font-semibold !font-['DancingScript'] !mb-4">Salgadas</h1>
               {/* <h2 className="text-black font-bold">SISTEMA EM DESENVOLVIMENTO, PEÇA NO <a href={`https://wa.me/5581983421723?text=${encodeURIComponent(`Olá! Gostaria de ser atendido.`)}`} target="_blank" rel="noopener noreferrer" title="Ir ao WhatsApp." className="text-[#25d366] hover:underline active:underline">WHATSAPP</a>.</h2> */}
-              <div className="cards-container grid gap-4 h-fit w-full">
+              <div className="cards-container grid gap-3 h-fit w-full">
                 {pizzasSalgadas.map((pizzaSalgada) => {
                   return (
                     <Card
