@@ -17,7 +17,7 @@ export default function About() {
     }
   }, [])
 
-  // document.getElementsByClassName("tb_rv_head_log_img")[0].setAttribute("alt", "Google - Logo");
+  document.querySelector(".tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
 
   function fixAccessibility() {
     // remove aria-roledescription
