@@ -17,6 +17,12 @@ export default function About() {
     }
   }, [])
 
+  document.querySelector(".tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
+
+  document.querySelectorAll('[aria-roledescription="slide"]').forEach((el) => {
+    el.removeAttribute("aria-roledescription");
+  });
+
   return (
     
     <section id="about" className="flex items-center justify-center flex-col w-full bg-linear-to-b from-[var(--bg-white-2)] to-[var(--bg-white-1)] scroll-mt-[48px]">
