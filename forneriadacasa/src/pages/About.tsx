@@ -17,11 +17,11 @@ export default function About() {
     }
   }, [])
 
-  document.querySelector(".tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
+  document.querySelector("tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
 
-  document.querySelectorAll('[aria-roledescription="slide"]').forEach((el) => {
-    el.removeAttribute("aria-roledescription");
-  });
+  document.querySelectorAll('[aria-hidden="true"] [tabindex]').forEach(
+    (el) => { el.removeAttribute("tabindex"); el.removeAttribute("role"); }
+  );
 
   return (
     
