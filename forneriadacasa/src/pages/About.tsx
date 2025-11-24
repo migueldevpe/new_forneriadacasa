@@ -17,11 +17,38 @@ export default function About() {
     }
   }, [])
 
-  document.querySelector("tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
+  document.getElementsByClassName("tb_rv_head_log_img")[0].setAttribute("alt", "Google - Logo");
 
-  document.querySelectorAll('[aria-hidden="true"] [tabindex]').forEach(
-    (el) => { el.removeAttribute("tabindex"); el.removeAttribute("role"); }
-  );
+  function fixAccessibility() {
+    // remove aria-roledescription
+    document
+      .querySelectorAll('[aria-roledescription="slide"]')
+      .forEach((el) => el.removeAttribute("aria-roledescription"));
+
+    // remove tabindex e role de elementos focáveis dentro de aria-hidden
+    document.querySelectorAll('[aria-hidden="true"] [tabindex]').forEach((el) => {
+      el.removeAttribute("tabindex");
+      el.removeAttribute("role");
+    });
+  }
+
+  function observeAndFix() {
+    fixAccessibility(); // primeira limpeza
+
+    // Observa alterações no DOM e aplica correção sempre
+    const observer = new MutationObserver(() => {
+      fixAccessibility();
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  // Executa quando carregar
+  window.addEventListener("DOMContentLoaded", observeAndFix);
 
   return (
     
