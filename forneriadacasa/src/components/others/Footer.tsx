@@ -7,7 +7,7 @@ import { MdEmail, MdPhoneInTalk } from "react-icons/md";
 import { IoIosPin, IoLogoWhatsapp } from "react-icons/io";
 import { useHandleSectionClick } from "../../hooks/useHandleSectionClick.ts";
 
-import footerImg from "../../assets/images/footer.webp";
+import footerImg from "/footer.webp?url";
 
 export default function Footer() {
   const handleSectionClick = useHandleSectionClick()
