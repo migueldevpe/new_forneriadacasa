@@ -60,7 +60,7 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
     <div className="card-container grid gap-2.5 bg-white w-full !p-2 rounded-md">
       <div className="relative rounded-md border-2 overflow-hidden" style={{ borderColor: `${border_color}` } as React.CSSProperties}>
         {img_ia && (
-          <img src="https://media.discordapp.net/attachments/1351637319416938536/1442576560690434180/marker1.webp?ex=6925ef9d&is=69249e1d&hm=f1cd378c1156e9be7ba7e254c1f459e7fcb8a4bad8f1db762f71d3fee80c6425&=&format=webp&width=900&height=900" className={`absolute aspect-[1024/1024] w-30 pointer-events-none [transform:_translateX(-50%)] left-6/12 bottom-[-24px]`} alt="Essa imagem foi gerado por IA." title="Essa imagem foi gerado por IA." />
+          <img src="https://media.discordapp.net/attachments/1351637319416938536/1442576560690434180/marker1.webp?ex=6925ef9d&is=69249e1d&hm=f1cd378c1156e9be7ba7e254c1f459e7fcb8a4bad8f1db762f71d3fee80c6425&=&format=webp&width=900&height=900" className={`absolute aspect-[1024/1024] w-30 pointer-events-none [transform:_translateX(-50%)] left-6/12 bottom-[-24px]`} alt="Essa imagem foi gerado por IA." title="Essa imagem foi gerado por IA." loading="lazy" decoding="async" fetchPriority="low" />
         )}
         {label && (
           <span className={`absolute top-1 right-1 text-white text-xs font-bold rounded-md !p-1`} style={{ background: `${bg_label}` } as React.CSSProperties}>
