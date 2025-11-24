@@ -31,6 +31,52 @@ a.insta-flavio {
   }
 }
 
+div.tagembed-widget {
+  max-width: 480px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+div.tb_theme_container > :nth-child(2) {
+  display: none !important;
+  visibility: hidden !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+div.splide__slide:first-child {
+  max-width: 0;
+  width: 0;
+}
+
+div.tb_rv_banner_btn {
+  border-radius: .375rem;
+  
+  font-size: 1rem !important;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+
+  padding: .5rem .75rem !important;
+  transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
+
+  &:hover {
+    background-color: var(--button-color-hover) !important;
+
+    box-shadow: inset 0 -3px 0 var(--button-color) !important;
+
+    opacity: 1 !important;
+  }
+}
+
+div.tb_hc_post_in {
+  box-shadow: none !important;
+}
+
 @media (max-width: 768px) {
   div.about-container {
     flex-direction: column-reverse;
@@ -68,5 +114,9 @@ a.insta-flavio {
 
     width: 100%;
     max-width: 475px;
+  }
+
+  div.tagembed-widget {
+    max-width: 100%;
   }
 }

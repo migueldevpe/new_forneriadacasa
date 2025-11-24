@@ -5,15 +5,16 @@ interface TooltipProps {
   label: string;
   style: React.CSSProperties;
   content_classStyle?: string;
+  tArrow?: string;
 }
 
-export default function Tooltip({ children, label, style, content_classStyle }: TooltipProps) {
+export default function Tooltip({ children, label, style, content_classStyle, tArrow="t-arrow" }: TooltipProps) {
 
   return (
 
     <div className={`tooltip-content relative ${content_classStyle ?? ""}`}>
       {children}
-      <div className="tooltip absolute !p-1.5 t-arrow" style={style}>{label}</div>
+      <div className={`tooltip absolute !p-1.5 ${tArrow}`} style={style}>{label}</div>
     </div>
     
   )

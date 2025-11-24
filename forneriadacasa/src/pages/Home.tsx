@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
 
-    <section id="home" className="flex justify-center w-full bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {!py-16} !pt-8">
+    <section id="home" className="flex justify-center w-full bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {!py-16} !pt-8 scroll-mt-[48px]">
       <div className="flex flex-row gap-10 text-white w-full max-w-[1000px]">
         <div className="home-text-content self-center w-6/12">
           <div>
@@ -22,8 +22,8 @@ export default function Home() {
                   <span>PEDIR AGORA</span>
                 </>
               } title="Ir para página de pizzas." />
-              <span className="home-price-aside text-[var(--price-home-color-1)] text-[clamp(1.25rem,6.45vw,1.475rem)] sm:text-[1.475rem] font-bold">R$ 62,00</span>
-              <small className="text-[var(--price-home-color-2)] text-[clamp(.8rem,4vw,.875rem)] sm:text-[.875rem] line-through">R$ 78,00</small>
+              <span className="home-price-aside text-[var(--price-home-color-1)] text-[clamp(1.25rem,6.4vw,1.475rem)] sm:text-[1.475rem] font-bold">R$ 64,00</span>
+              <small className="text-[var(--price-home-color-2)] text-[clamp(.775rem,3.95vw,.875rem)] sm:text-[.875rem] line-through">R$ 80,00</small>
             </aside>
           </div>
         </div>

@@ -1,5 +1,5 @@
 div.card-container {
-  grid-template-rows: 200px minmax(200px, auto);
+  grid-template-rows: 200px minmax(180px, auto);
 
   box-shadow: 4px 4px 8px #00000033;
   transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
@@ -11,6 +11,38 @@ div.card-container {
   }
 }
 
+p.descParagraph {
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
 button.btn-add {
   transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+button.addBtnAnim > svg {
+  animation: addBtnAnim .75s ease-in-out;
+}
+
+@keyframes addBtnAnim {
+  0% {
+    transform: scale(0);
+  }
+  55% {
+    transform: scale(1.15);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  90% {
+    transform: scale(1.03); 
+  }
+  100% {
+    transform: scale(1);
+  }
 }

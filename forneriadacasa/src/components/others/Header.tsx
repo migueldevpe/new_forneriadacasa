@@ -16,8 +16,6 @@ export default function Header() {
 
   const handleSectionClick = useHandleSectionClick();
 
-  // ANOTAR diferença no return (e: React.MouseEvent) => {} e function(e: React.MouseEvent), do setInterval/Timeout/Falar da Renderização condicional {X && ()}
-
   return (
   
     <header id="header" className="sticky top-0 w-full z-10">
@@ -28,8 +26,8 @@ export default function Header() {
               <img src={Logo} alt="Logo - Forneria da Casa" className="h-full w-full aspect-square" loading="eager" decoding="sync" fetchPriority="high" />
             </picture>        
           </Link>
-          <nav className="nav-container flex items-center flex-row gap-3 h-full">
-            <ul className="menu flex items-center flex-row gap-3 h-full text-[1.125rem] font-bold">
+          <nav className="nav-container flex items-center flex-row gap-2.75 h-full">
+            <ul className="menu flex items-center flex-row gap-2.75 h-full text-[1.125rem] font-bold">
               <li id="#home" onClick={handleSectionClick("#home")} className="nav-link flex items-center h-full">
                 <button type="button" className="flex items-center h-full cursor-pointer">Início</button>
               </li>

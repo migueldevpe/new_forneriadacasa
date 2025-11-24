@@ -7,7 +7,7 @@ export default function Local() {
 
   return (
 
-    <section id="local" className="flex items-center justify-center w-full bg-linear-to-b from-[var(--bg-yellow-2)] to-[var(--bg-yellow-1)]">
+    <section id="local" className="flex items-center justify-center w-full bg-linear-to-b from-[var(--bg-yellow-2)] to-[var(--bg-yellow-1)] scroll-mt-[48px]">
       <div className="flex justify-between flex-row gap-10 w-full max-w-[1000px]">
         <div className="local-text-content self-center text-white w-6/12">
           <div>
