@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex items-center justify-between text-white h-[48px] w-full max-w-[1000px]">
           <Link to="/" onClick={handleSectionClick("#home")}>
             <picture className="flex shrink-0 h-[85px] w-[85px] !mt-[2rem] pointer-events-none drop-shadow-md">
-              <img src={Logo} alt="Logo - Forneria da Casa" className="h-full w-full aspect-square" loading="eager" decoding="sync" fetchPriority="high" />
+              <img src={Logo} alt="Forneria da Casa - Logo" className="h-full w-full aspect-square" loading="eager" decoding="sync" fetchPriority="high" />
             </picture>        
           </Link>
           <nav className="nav-container flex items-center flex-row gap-2.75 h-full">
