@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
 
-    <section id="home" className="flex justify-center w-full bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {!py-16} !pt-8">
+    <section id="home" className="flex justify-center w-full bg-linear-to-b from-[var(--bg-yellow-1)] to-[var(--bg-yellow-2)] {!py-16} !pt-8 scroll-mt-[48px]">
       <div className="flex flex-row gap-10 text-white w-full max-w-[1000px]">
         <div className="home-text-content self-center w-6/12">
           <div>

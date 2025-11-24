@@ -21,7 +21,7 @@ export default function CartContainer() {
   const [note, setNote] = useState<string>("");
 
   const linhasDoPedido = cart.map(item => 
-    `${item.quantity}x ${item.title} - R$${item.price.toFixed(2)}/unidade - Borda: ${item.borderPizza === "" ? "SEM RECHEIO" : item.borderPizza.toUpperCase()} - Subtotal: R$${(item.price * item.quantity).toFixed(2)}`
+    `${item.quantity}x ${item.title} - R$${item.price.toFixed(2)}/unidade - Borda: ${item.borderPizza === "" ? "SEM RECHEIO" : String(item.borderPizza).toUpperCase()} - Subtotal: R$${(item.price * item.quantity).toFixed(2)}`
   ).join("\n\n");
 
   function submitMensagem(e: React.FormEvent) {
@@ -29,25 +29,58 @@ export default function CartContainer() {
 
     if (!payMethod || !adress) return;
 
-    if (!name) return window.alert("OBRIGATÓRIO: Insira o seu nome!")
+    if (!name) {
+      window.alert("OBRIGATÓRIO: Insira o seu nome!");
 
-    const mensagem = 
-      `Olá! Gostaria de realizer um pedido.
-      
-      <------------------------------->
-      
-      Pedido de ${name.toUpperCase()} - Forneria da Casa
+      return
+    } else if (name.length < 3) {
+      window.alert("INVÁLIDO: Insira um nome válido.");
 
-      ${linhasDoPedido.replace(/\./g, ',')}
+      return
+    } else if (adress.length < 3) {
+      window.alert("INVÁLIDO: Insira um endereço válido.");
 
-      <------------------------------->
+      return
+    };
 
-      Método de Pagamento: ${payMethod.toUpperCase()}
-      Endereço: ${adress.toUpperCase()}
-      Observação: ${note === "" ? "N/A" : note.toUpperCase()}
-      Valor total: R$${total.toFixed(2).replace(/\./g, ',')}` 
+    const nD = new Date();
 
-    window.open(`https://wa.me/5581984325732?text=${encodeURIComponent(mensagem.replace(/^(?!\s*$)\s+/gm, ''))}`, "_blank", "noopener,noreferrer")
+    const horaBrasil = Number(
+      nD.toLocaleString("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        hour: "2-digit",
+        hour12: false
+      })
+    );
+
+    const diaBrasil = nD.toLocaleString("pt-BR", {
+      timeZone: "America/Sao_Paulo"
+    });
+
+    const diaSemana = new Date(diaBrasil).getDay();
+
+    if ((diaSemana !== 1 && diaSemana !== 2) && (horaBrasil >= 17 && horaBrasil <= 22)) {
+      const mensagem = 
+        `Olá! Gostaria de realizer um pedido.
+        
+        <------------------------------->
+        
+        Pedido de ${name.toUpperCase()} - Forneria da Casa
+
+        ${linhasDoPedido.replace(/\./g, ',')}
+
+        <------------------------------->
+
+        Método de Pagamento: ${payMethod.toUpperCase()}
+        Endereço: ${adress.toUpperCase()}
+        Observação: ${note === "" ? "N/A" : note.toUpperCase()}
+        Valor total: R$${total.toFixed(2).replace(/\./g, ',')}` 
+
+      window.open(`https://wa.me/5581983421723?text=${encodeURIComponent(mensagem.replace(/^(?!\s*$)\s+/gm, ''))}`, "_blank", "noopener,noreferrer")
+    } else {
+      window.alert("Estamos fechados no momento. Funcionamos de quarta a domingo, das 18h às 22h.")
+    }
+
   }
 
   return (
@@ -83,7 +116,7 @@ export default function CartContainer() {
                               <option value="Chocolate">Chocolate</option>
                             </select>
                             <Tooltip label="Consulte o valor correto dos adicionais (Bordas ou Turbinações) no WhatsApp." tArrow="t-arrow-top" style={{ "--tooltip-hover-x": "50%", "--tooltip-hover-y": "1.75rem", boxShadow: "0 0 20px #00000015" } as React.CSSProperties}>
-                              <IoInformationCircle />
+                              <IoInformationCircle className="cursor-help" />
                             </Tooltip>
                           </div>
                         </div>    
@@ -112,7 +145,7 @@ export default function CartContainer() {
             </div>
             {cart.length > 0 && (
               <div className="flex flex-col gap-2 w-full !p-2 !pt-0">
-                <form onSubmit={submitMensagem} className="flex flex-col gap-0.75">
+                <form onSubmit={submitMensagem} className="flex flex-col gap-1.5">
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="paymethod">Pagamento:</label>
                     <select name="paymethod" id="paymethod" onChange={(e) => setPayMethod(e.target.value)} value={payMethod} className="!max-h-[22px] [all:revert]" required >
@@ -124,15 +157,15 @@ export default function CartContainer() {
                   </div>     
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="name">Nome:</label>
-                    <input type="text" name="name" id="name" placeholder="Seu nome" onChange={(e) => setName(e.target.value)} value={name} className="!max-h-[22px] !w-full [all:revert]" required />
+                    <input type="text" name="name" id="name" placeholder="Seu nome" onChange={(e) => setName(e.target.value)} value={name} autoComplete="off" className="!max-h-[22px] !w-full [all:revert]" required />
                   </div>                              
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="adress">Endereço:</label>
-                    <input type="text" name="adress" id="adress" placeholder="Cidade, Rua, Bloco, Número" onChange={(e) => setAdress(e.target.value)} value={adress} className="!max-h-[22px] !w-full [all:revert]" required />
+                    <input type="text" name="adress" id="adress" placeholder="Cidade, Rua, Bloco, Número" onChange={(e) => setAdress(e.target.value)} value={adress} autoComplete="off" className="!max-h-[22px] !w-full [all:revert]" required />
                   </div>
                   <div className="flex items-center flex-row gap-1">
                     <label htmlFor="note">Observação:</label>
-                    <input type="text" name="note" id="note" placeholder="Tirar cebola, Ponto de referência" onChange={(e) => setNote(e.target.value)} value={note} className="!max-h-[22px] !w-full [all:revert]"/>
+                    <input type="text" name="note" id="note" placeholder="Tirar cebola, Ponto de referência" onChange={(e) => setNote(e.target.value)} value={note} autoComplete="off" className="!max-h-[22px] !w-full [all:revert]"/>
                   </div>
                   <p>Total: <span className="font-bold">R${total.toFixed(2).replace(/\./g, ',')}</span></p>
                   <ButtonFDC typeBtn="submit" label={
@@ -140,7 +173,7 @@ export default function CartContainer() {
                       <HiMiniArrowTopRightOnSquare />
                       <span>Confirmar no WhatsApp</span>
                     </>
-                  } styleClass="flex-1 gap-1.25 text-[1rem] text-center w-full !py-3"/>                  
+                  } styleClass="flex-1 gap-1.25 text-[1rem] text-center w-full !py-2.5"/>                  
                 </form>
               </div>
             )}

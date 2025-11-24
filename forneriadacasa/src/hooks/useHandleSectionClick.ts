@@ -22,25 +22,31 @@ export function useHandleSectionClick() {
         } else {
           document.querySelector(section)?.scrollIntoView({ block: "start" });
         }
-      } else if (location.pathname !== "/" && section === "#home") {
-        const timeout = setTimeout(() => {
-          window.scrollTo({ top: 0 })
-        }, 300);
+      } else if (location.pathname !== "/") {
+        if (section === "#home") {
+          const timeout = setTimeout(() => {
+            window.scrollTo({ top: 0 })
+          }, 300);
 
-        navigate("/");
+          navigate("/");
 
-        return () => clearTimeout(timeout);
-      } else if (location.pathname === "/order" && (section === "#salgadas" || "#doces")) {
-        document.querySelector(section)?.scrollIntoView({ block: "start" })
-      } else {
-        const timeout = setTimeout(() => {
-          document.querySelector(section)?.scrollIntoView({ block: "start" });
-        }, 300);
+          return () => clearTimeout(timeout);
+        } else if (section === "#salgadas" || section === "#doces") {
+          const timeout = setTimeout(() => {
+            document.querySelector(section)?.scrollIntoView({ block: "start" })
+          }, 300);
+          
+          return () => clearTimeout(timeout)
+        } else {
+          const timeout = setTimeout(() => {
+            document.querySelector(section)?.scrollIntoView({ block: "start" });
+          }, 300);
 
-        navigate("/");
-      
-        return () => clearTimeout(timeout);
-      }
+          navigate("/");
+        
+          return () => clearTimeout(timeout);
+        }
+      } 
     };
   }
 

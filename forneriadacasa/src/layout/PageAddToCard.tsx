@@ -1,14 +1,47 @@
 import "./PageAddToCard.css";
 
+// import Card from "../components/pizzaCard/Card";
 
-import Card from "../components/pizzaCard/Card";
+// const PizzasSalgadasContent = React.lazy(() => import("../utils/pizzasSalgadas.tsx"))
 
-import { pizzasDoces } from "../utils/pizzasDoces";
 import { useHandleSectionClick } from "../hooks/useHandleSectionClick";
-import { pizzasSalgadas } from "../utils/pizzasSalgadas";
+import React, { Suspense, useEffect } from "react";
+import { GiFullPizza } from "react-icons/gi";
+
+const PizzasDocesContent = React.lazy(() => import("../utils/pizzasDoces.tsx"));
+const PizzasSalgadasContent = React.lazy(() => import("../utils/pizzasSalgadas.tsx"));
+
+// import { pizzasSalgadas } from "../utils/pizzasSalgadas";
+// import { useState } from "react";
 
 export default function PageAddToCard() {
   const handleSectionClick = useHandleSectionClick()
+
+  // const [text, setText] = useState<string>("");
+  // const [contents, setContents] = useState<{ messageText: string }[]>([])
+
+  // const handleAdd = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   const message = { 
+  //     messageText: text
+  //   };
+
+  //   setContents((prev) => [...prev, message]);
+
+  //   setText("")
+  // }
+
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+
+    return () => {
+      document.head.removeChild(meta)
+    }
+  }, [])
 
   return (
 
@@ -23,41 +56,38 @@ export default function PageAddToCard() {
           <div className="flex items-center justify-center flex-col gap-8">
             <div id="doces" className="scroll-mt-[88px] w-full">
               <h1 className="text-[var(--text-salgado-doce)] text-3xl font-semibold !font-['DancingScript'] !mb-4">Doces</h1>
-              <div className="cards-container grid gap-3 h-fit w-full">
-                {pizzasDoces.map((pizzaDoce) => {
+              {/* <form onSubmit={handleAdd} >
+                <input type="text" name="" id="" placeholder="Texto" onChange={(e) => setText(e.target.value)} value={text} className="[all:revert]" />
+                <button type="submit" className="[all:revert]" >Enviar</button>
+              </form>
+              <div>
+                {contents.map((content, i) => {
                   return (
-                    <Card
-                      key={pizzaDoce.title}
-                      img={pizzaDoce.img}
-                      title={pizzaDoce.title}
-                      desc={pizzaDoce.desc}
-                      valor={pizzaDoce.valor}
-                      label={pizzaDoce.label}
-                      bg_label={pizzaDoce.bg_label}
-                      border_color={pizzaDoce.border_color}
-                    />
+                    <p key={i} >{content.messageText}</p>
                   )
                 })}
+              </div> */}
+              <div className="cards-container grid gap-3 relative h-fit w-full"> 
+                <Suspense fallback={(
+                  <div className="flex items-center justify-center h-[25dvh] w-full col-span-full [animation:rotateIconPizza_2s_ease-in-out_infinite]">
+                    <GiFullPizza size={64} color="var(--text-salgado-doce)" />
+                  </div>
+                )}>            
+                  <PizzasDocesContent />
+                </Suspense> 
               </div>
             </div>
             <div id="salgadas" className="scroll-mt-[88px] w-full">
               <h1 className="text-[var(--text-salgado-doce)] text-3xl font-semibold !font-['DancingScript'] !mb-4">Salgadas</h1>
               {/* <h2 className="text-black font-bold">SISTEMA EM DESENVOLVIMENTO, PEÇA NO <a href={`https://wa.me/5581983421723?text=${encodeURIComponent(`Olá! Gostaria de ser atendido.`)}`} target="_blank" rel="noopener noreferrer" title="Ir ao WhatsApp." className="text-[#25d366] hover:underline active:underline">WHATSAPP</a>.</h2> */}
-              <div className="cards-container grid gap-3 h-fit w-full">
-                {pizzasSalgadas.map((pizzaSalgada) => {
-                  return (
-                    <Card
-                      key={pizzaSalgada.title}
-                      img={pizzaSalgada.img}
-                      title={pizzaSalgada.title}
-                      desc={pizzaSalgada.desc}
-                      valor={pizzaSalgada.valor}
-                      label={pizzaSalgada.label}
-                      bg_label={pizzaSalgada.bg_label}
-                      border_color={pizzaSalgada.border_color}
-                    />
-                  )
-                })}
+              <div className="cards-container grid gap-3 h-fit w-full">      
+                <Suspense fallback={(
+                  <div className="flex items-center justify-center h-[25dvh] w-full col-span-full [animation:rotateIconPizza_2s_ease-in-out_infinite]">
+                    <GiFullPizza size={64} color="var(--text-salgado-doce)" />
+                  </div>
+                )}>
+                  <PizzasSalgadasContent />
+                </Suspense>               
               </div>
             </div>
           </div>

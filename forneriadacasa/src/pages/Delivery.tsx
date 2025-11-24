@@ -7,7 +7,7 @@ export default function Delivery() {
 
   return (
 
-    <section id="delivery" className="flex items-center justify-center w-full bg-linear-to-b from-[var(--bg-white-1)] to-[var(--bg-white-2)]">
+    <section id="delivery" className="flex items-center justify-center w-full bg-linear-to-b from-[var(--bg-white-1)] to-[var(--bg-white-2)] scroll-mt-[48px]">
       <div className="flex justify-between flex-row gap-10 w-full max-w-[1000px]">
         <div className="delivery-text-content self-center w-6/12">
           <div>
