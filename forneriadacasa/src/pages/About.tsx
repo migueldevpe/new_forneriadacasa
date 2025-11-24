@@ -17,7 +17,21 @@ export default function About() {
     }
   }, [])
 
-  document.querySelector(".tb_rv_head_log_img")?.setAttribute("alt", "Google - Logo");
+  const altText = "Google - Logo";
+
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll(".tb_rv_head_log_img").forEach(img => {
+      if (img.getAttribute("alt") !== altText) {
+        img.setAttribute("alt", altText);
+      }
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+  });
 
   function fixAccessibility() {
     // remove aria-roledescription
