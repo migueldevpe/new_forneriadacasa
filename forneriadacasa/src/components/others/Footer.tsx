@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="flex flex-col gap-4 w-full max-w-[1000px]">
         <div className="f-content flex justify-between flex-row">
           <div className="shrink-0">
-            <img src={footerImg} alt="Forneria da Casa - Logo" loading="lazy" decoding="async" fetchPriority="low" className="h-[190px] w-[190px] aspect-square pointer-events-none" />
+            <img src={footerImg} alt="Forneria da Casa - Logo" loading="eager" decoding="sync" fetchPriority="high" className="h-[190px] w-[190px] aspect-square pointer-events-none" />
           </div>
           <div className="f-columns flex flex-row gap-10">
             <div>
