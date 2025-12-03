@@ -34,12 +34,10 @@ export default function About() {
   });
 
   function fixAccessibility() {
-    // remove aria-roledescription
     document
       .querySelectorAll('[aria-roledescription="slide"]')
       .forEach((el) => el.removeAttribute("aria-roledescription"));
 
-    // remove tabindex e role de elementos focáveis dentro de aria-hidden
     document.querySelectorAll('[aria-hidden="true"] [tabindex]').forEach((el) => {
       el.removeAttribute("tabindex");
       el.removeAttribute("role");
@@ -47,9 +45,8 @@ export default function About() {
   }
 
   function observeAndFix() {
-    fixAccessibility(); // primeira limpeza
+    fixAccessibility();
 
-    // Observa alterações no DOM e aplica correção sempre
     const observer = new MutationObserver(() => {
       fixAccessibility();
     });
@@ -61,7 +58,6 @@ export default function About() {
     });
   }
 
-  // Executa quando carregar
   window.addEventListener("DOMContentLoaded", observeAndFix);
 
   return (

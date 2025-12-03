@@ -61,14 +61,14 @@ export default function Card({ img="https://placehold.co/225x200/cdcdcd/000?text
     <div className="card-container grid gap-2.5 bg-white w-full !p-2 rounded-md">
       <div className="relative rounded-md border-2 overflow-hidden" style={{ borderColor: `${border_color}` } as React.CSSProperties}>
         {img_ia && (
-          <img src={iaWatermarker} className={`absolute aspect-[512/256] w-30 pointer-events-none [transform:_translateX(-50%)] left-6/12 bottom-[5px]`} alt="Essa imagem foi gerado por IA." title="Essa imagem foi gerado por IA." loading="lazy" decoding="async" fetchPriority="low" />
+          <img src={iaWatermarker} className="absolute aspect-[512/256] w-30 pointer-events-none [transform:_translateX(-50%)] left-6/12 bottom-[5px]" alt="Essa imagem foi gerado por IA." title="Essa imagem foi gerado por IA." loading="lazy" decoding="async" fetchPriority="low" />
         )}
         {label && (
-          <span className={`absolute top-1 right-1 text-white text-xs font-bold rounded-md !p-1`} style={{ background: `${bg_label}` } as React.CSSProperties}>
+          <span className="absolute top-1 right-1 text-white text-xs font-bold rounded-md !p-1" style={{ background: `${bg_label}` } as React.CSSProperties}>
           {label}
           </span>
         )}
-        <img src={img} alt={`${title} - Ilustração`} className={`h-full w-full object-cover aspect-[225/200]`}  loading="lazy" decoding="async" fetchPriority="low"/>
+        <img src={img} alt={`${title} - Ilustração`} className="h-full w-full object-cover aspect-[225/200]"  loading="lazy" decoding="async" fetchPriority="low"/>
       </div>
       <div>
         <div className="flex justify-between flex-col gap-4 h-full w-full">
