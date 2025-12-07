@@ -32,7 +32,7 @@ export default function PageAddToCard() {
               </Suspense> 
             </div>
           </div>
-          <div id="salgadas" className="scroll-mt-[88px] w-full">
+          <div id="salgadas" className="scroll-mt-[88px] w-full !mb-12">
             <h1 className="text-[var(--text-salgado-doce)] text-3xl font-semibold !font-['DancingScript'] !mb-4">Salgadas</h1>
             {/* <h2 className="text-black font-bold">SISTEMA EM DESENVOLVIMENTO, PEÇA NO <a href={`https://wa.me/5581983421723?text=${encodeURIComponent(`Olá! Gostaria de ser atendido.`)}`} target="_blank" rel="noopener noreferrer" title="Ir ao WhatsApp." className="text-[#25d366] hover:underline active:underline">WHATSAPP</a>.</h2> */}
             <div className="cards-container grid gap-3 h-fit w-full">      

@@ -12,7 +12,7 @@ const pizzasDoces = [
     title: "Pizza de Chocolate c/ M&M",
     desc: "Pizza doce com farta camada de chocolate derretido e confeitos M&M crocantes, trazendo o contraste ideal entre o sabor intenso do chocolate e o toque divertido do confeito.",
     valor: "34,00", 
-    label: "Nova",
+    label: "Novidade",
     bg_label: "#c10007",
     border_color: "#c10007"
   },
